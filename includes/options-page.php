@@ -29,32 +29,32 @@ function padma_settings_init(){
   add_settings_section(
     'padma_settings_section',
     'PADMA-ThriveLeads Integration Configuration',
-    'padma_settings_callback',
+    'padma_settings_section_title_render',
     'pluginPage'
   );
   
   add_settings_field(
     'padma_api_key',
     'PADMA API KEY',
-    'padma_api_key_setting_callback',
+    'padma_api_key_setting_render',
     'pluginPage',
     'padma_settings_section'
   );
   
-  register_setting('pluginPage','padma_api_key','padma_api_key_sanitize_callback');
+  register_setting('pluginPage','padma_api_key','padma_no_sanitazion_callback');
 };
 
-function padma_settings_callback(){
+function padma_settings_section_title_render(){
   echo "Insert here your api key. 'form_integration' access is needed.";
 };
 
-function padma_api_key_setting_callback(){
+function padma_api_key_setting_render(){
   $apikey = get_option( 'padma_api_key');
   echo "<input name='padma_api_key' id='padma_api_key' type='text' value='$apikey'/>";
 };
 
-function padma_api_key_sanitize_callback($raw_api_key){
-  return $raw_api_key;
+function padma_no_sanitazion_callback($value){
+  return $value;
 };
 
 ?>

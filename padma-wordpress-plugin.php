@@ -20,5 +20,6 @@ require_once( PADMA_PLUGIN_DIR . 'includes/activation-deactivation.php' );
 require_once( PADMA_PLUGIN_DIR . 'includes/options-page.php' );
 require_once( PADMA_PLUGIN_DIR . 'includes/post-to-padma.php' );
 require_once( PADMA_PLUGIN_DIR . 'includes/hook-into-thriveleads.php' );
+require_once( PADMA_PLUGIN_DIR . 'includes/hook-into-contactform7.php' );
 
 ?>
