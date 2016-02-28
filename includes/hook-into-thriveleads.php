@@ -4,7 +4,7 @@
 add_action("tve_leads_form_conversion", "padma_forward_post_to_padma", 10, 5); 
 
 function padma_forward_post_to_padma($main, $form_type, $variation, $active_test_id, $data, $post_data) {
-  error_log(padma_post_form($post_data));
+  padma_post_form($post_data);
 }
 
 ?>

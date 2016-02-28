@@ -41,16 +41,30 @@ function padma_settings_init(){
     'padma_settings_section'
   );
   
+  add_settings_field(
+    'padma_communication_username',
+    'Default username for communication',
+    'padma_communication_username_render',
+    'pluginPage',
+    'padma_settings_section'
+  );
+  
   register_setting('pluginPage','padma_api_key','padma_no_sanitazion_callback');
+  register_setting('pluginPage','padma_communication_username','padma_no_sanitazion_callback');
 };
 
 function padma_settings_section_title_render(){
-  echo "Insert here your api key. 'form_integration' access is needed.";
+  echo "";
 };
 
 function padma_api_key_setting_render(){
   $apikey = get_option( 'padma_api_key');
   echo "<input name='padma_api_key' id='padma_api_key' type='text' value='$apikey'/>";
+};
+
+function padma_communication_username_render(){
+  $username = get_option( 'padma_communication_username');
+  echo "<input name='padma_communication_username' id='padma_communication_username' type='text' value='$username'/>";
 };
 
 function padma_no_sanitazion_callback($value){

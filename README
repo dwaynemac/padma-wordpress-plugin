@@ -1,3 +1,18 @@
 PADMA THRIVELEADS INTEGRATION
 
 this plugin forwards your thriveleads forms to PADMA CRM.
+
+IGNORING A FORM:
+
+setting 'padma_ignore_this_form' will avoid form being forwarded.
+
+You may add this to your form:
+
+<input type="hidden" name="padma_ignore_this_form" value="1" />
+
+COMMUNICATION USERNAME
+
+In plugin options you can set default username for communications.
+You can set it in a per form basis adding a 'padma_username' hidden field.
+
+<input type="hidden" name="padma_username" value="nome.deusuario" />
