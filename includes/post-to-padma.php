@@ -40,6 +40,6 @@ function padma_merge_options($data){
 
   return $data;
 };
-add_action("padma_merge_options","padma_merge_options");
+add_filter("padma_merge_options","padma_merge_options");
 
 ?>

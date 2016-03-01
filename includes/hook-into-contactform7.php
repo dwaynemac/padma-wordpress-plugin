@@ -6,7 +6,6 @@ add_action("wpcf7_submit", "padma_forward_cf7_to_padma", 10, 2);
 function padma_forward_cf7_to_padma($form,$result) {
   // TODO has spam been filtered already?
   // TODO has form been validated already?
-
   $submission = WPCF7_Submission::get_instance();
   if ( $submission ) {
     $posted_data = $submission->get_posted_data();
