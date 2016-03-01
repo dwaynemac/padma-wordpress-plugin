@@ -10,6 +10,13 @@ function padma_forward_post_to_padma($post_data) {
 
 
 function padma_filter_tve_data($data){
+
+  foreach (array_keys($data) as $key){
+    if(preg_match("/.*_optin/",$key)==1){
+      unset($data[$key]);
+    }
+  }
+
   return $data;
 }
 add_filter('padma_filter_form_data', 'padma_filter_tve_data');
