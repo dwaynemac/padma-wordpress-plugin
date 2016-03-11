@@ -15,6 +15,9 @@ function padma_filter_form_data($data){
     if(preg_match("/url/",$key)==1){
       unset($data[$key]);
     }
+    if(preg_match("/_wpnonce/",$key)==1){
+      unset($data[$key]);
+    }
   }
 
   return $data;
