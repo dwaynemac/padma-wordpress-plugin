@@ -38,6 +38,10 @@ function padma_merge_options($data){
     $data = array_merge($data,array('api_key' => get_option('padma_api_key')));
   }
 
+  if(!empty(get_option('padma_site_name'))){
+    $data = array_merge($data,array('contacted_from_site' => get_option('padma_site_name')));
+  }
+
   return $data;
 };
 add_filter("padma_merge_options","padma_merge_options");

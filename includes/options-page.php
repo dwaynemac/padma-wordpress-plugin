@@ -32,7 +32,7 @@ function padma_settings_init(){
     'padma_settings_section_title_render',
     'pluginPage'
   );
-  
+
   add_settings_field(
     'padma_api_key',
     'PADMA API KEY',
@@ -40,7 +40,7 @@ function padma_settings_init(){
     'pluginPage',
     'padma_settings_section'
   );
-  
+
   add_settings_field(
     'padma_communication_username',
     'Default username for communication',
@@ -48,9 +48,18 @@ function padma_settings_init(){
     'pluginPage',
     'padma_settings_section'
   );
-  
+
+  add_settings_field(
+    'padma_site_name',
+    'Nome do site',
+    'padma_site_name_render',
+    'pluginPage',
+    'padma_settings_section'
+    );
+
   register_setting('pluginPage','padma_api_key','padma_no_sanitazion_callback');
   register_setting('pluginPage','padma_communication_username','padma_no_sanitazion_callback');
+  register_setting('pluginPage','padma_site_name','padma_no_sanitazion_callback');
 };
 
 function padma_settings_section_title_render(){
@@ -61,6 +70,11 @@ function padma_api_key_setting_render(){
   $apikey = get_option( 'padma_api_key');
   echo "<input name='padma_api_key' id='padma_api_key' type='text' value='$apikey'/>";
 };
+
+function padma_site_name_render(){
+  $username = get_option( 'padma_site_name');
+  echo "<input name='padma_site_name' id='padma_site_name' type='text' value='$site_name'/>";
+}
 
 function padma_communication_username_render(){
   $username = get_option( 'padma_communication_username');
