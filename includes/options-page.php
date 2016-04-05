@@ -72,7 +72,7 @@ function padma_api_key_setting_render(){
 };
 
 function padma_site_name_render(){
-  $username = get_option( 'padma_site_name');
+  $site_name = get_option( 'padma_site_name');
   echo "<input name='padma_site_name' id='padma_site_name' type='text' value='$site_name'/>";
 }
 
