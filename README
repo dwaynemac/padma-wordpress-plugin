@@ -1,6 +1,10 @@
-PADMA THRIVELEADS INTEGRATION
+PADMA FORMS INTEGRATION
 
-this plugin forwards your thriveleads forms to PADMA CRM.
+this plugin forwards your thriveleads and ContactForm7 forms to PADMA CRM.
+
+NAME FIELD
+
+at least one of your fields should name one of: name, firstname or first_name
 
 IGNORING A FORM:
 
