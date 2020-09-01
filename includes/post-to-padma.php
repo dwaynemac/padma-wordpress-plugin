@@ -13,7 +13,8 @@ function padma_post_form($data){
       'blocking'    => true,
       'headers'     => array(),
       'body'        => $data,
-      'cookies'     => array()
+      'cookies'     => array(),
+      'sslverify'   => false
       )
     );
 
