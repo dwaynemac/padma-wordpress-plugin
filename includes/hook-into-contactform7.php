@@ -4,8 +4,11 @@ if((WPCF7_VERSION !== null) && (floatval(WPCF7_VERSION)>=4.1)){
   padma_log("detected contactform >= 4.1");
 
   // wpcf7_submit available since ContacForm7 4.1.2, tested with 4.4
-  add_action("wpcf7_mail_sent", "padma_forward_cf7_to_padma", 10, 1);
+  // add_action("wpcf7_submit", "padma_forward_cf7_to_padma", 10, 1); // SPAM has not been filtered here, maybe cuold filter with $result data ?
+  add_action("wpcf7_mail_sent", "padma_forward_cf7_to_padma", 10, 1); // SPAM already filtered here
 
+  // wpcf7_submit provides $form and $result params
+  // wpcf7_mail_sent only provide $form
   function padma_forward_cf7_to_padma($form) {
     $submission = WPCF7_Submission::get_instance();
     if ( $submission ) {
