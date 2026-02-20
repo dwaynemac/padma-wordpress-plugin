@@ -74,6 +74,42 @@ This overrides the default username from plugin settings for that submission.
 - Thrive Leads fields matching `*_optin` are removed before forwarding.
 - Standard noise fields are also removed (see filtering section below).
 
+## Supported Fields
+
+The PADMA CRM API accepts the following fields.
+
+### Name & Contact
+- `first_name`, `firstname`, or `name` (If blank, falls back to `friendly_name`, or the prefix of the `email` address)
+- `friendly_name`
+- `email` or `e-mail`
+- `telephone` or `telefone`
+- `mobile`, `mobile_phone`, or `mobile_telephone`
+- `business_phone`
+
+### Identification
+- `rg` or `id_rg`
+- `cpf` or `id_cpf`
+- `dni` or `id_dni`
+
+### Address
+*(Note: `address_street_name` is required if any other address fields are provided)*
+- `address_street_name`
+- `address_street_number`
+- `address_door`
+- `address_postal_code`
+- `address_city`
+- `address_neighborhood`
+- `address_state`
+- `address_country`
+- `address_label` or `address_category`
+
+### Other Information
+- `occupation` or `profession`
+- `tags`, `new_tags`, or `new_tag_names` (Multiple tags can be separated by commas `,` or semicolons `;`)
+- `message`
+- any other field will be stored as a custom field
+
+
 ## Payload Filtering Rules
 
 Before forwarding, these keys are removed when their names match:
