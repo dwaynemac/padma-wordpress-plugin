@@ -1,4 +1,8 @@
-Use wp-plugin-development skill to follow up-to-date WordPress standards
+- Use wp-plugin-development skill to follow up-to-date WordPress standards.
+
+# README.md
+Always keep README.md up to date.
+README.md must provide all needed information for site developers to install and configure this plugin on their wordpress site.
 
 # PADMA WordPress Plugin — Agents
 
