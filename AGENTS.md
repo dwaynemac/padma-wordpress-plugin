@@ -1,3 +1,5 @@
+Use wp-plugin-development skill to follow up-to-date WordPress standards
+
 # PADMA WordPress Plugin — Agents
 
 This plugin will forward wordpress form submissions to PADMA CRM.
