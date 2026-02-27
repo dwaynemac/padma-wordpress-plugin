@@ -67,6 +67,23 @@ Each agent can contribute its own additional filters (see below).
 - Additional filtering: removes keys that end with `_optin` (pattern `.*_optin`).
 - Notes: Supported out of the box; no extra configuration is required beyond the global plugin options.
 
+### 3) WPForms Lite
+
+- Trigger: `wpforms_process_complete`.
+- Payload key mapping:
+  - Uses WPForms field label (`name`) normalized to PADMA-style keys.
+  - Normalization rules:
+    - lowercase
+    - replace non-alphanumeric runs with `_`
+    - collapse repeated `_`
+    - trim leading/trailing `_`
+- Fallback key: if normalized label is empty, key becomes `field_<field_id>`.
+- Duplicate normalized keys: first key is kept; additional keys are suffixed with `_<field_id>`.
+- Multi-value fields: sent as comma-separated text values.
+- Notes:
+  - Supported out of the box.
+  - To map reliably, label fields with PADMA target keys (for example `first_name`, `email`, `message`).
+
 ## Merge and Override Behavior
 
 When both plugin settings and form fields supply the same logical value, precedence is:
@@ -90,6 +107,9 @@ The PADMA CRM API accepts specific field names and aliases for contacts, identif
   - Confirm the event is `wpcf7_mail_sent` and emails are being sent successfully.
 - Thrive Leads issues
   - Confirm the form is actually firing `tcb_api_form_submit` upon submit.
+- WPForms Lite issues
+  - Confirm the form submission reaches `wpforms_process_complete`.
+  - Confirm field labels match PADMA keys after normalization.
 
 ## Extending: Adding a New Agent
 

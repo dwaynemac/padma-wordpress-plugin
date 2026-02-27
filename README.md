@@ -4,6 +4,7 @@ This plugin forwards form submissions from WordPress to PADMA CRM using:
 
 - Contact Form 7 (`wpcf7_mail_sent`)
 - Thrive Leads (`tcb_api_form_submit`)
+- WPForms Lite (`wpforms_process_complete`)
 
 Submissions are sent to:
 
@@ -18,6 +19,7 @@ Submissions are sent to:
   - Current plugin code checks `WPCF7_VERSION` directly during load.
   - If Contact Form 7 is missing, the plugin can fail to load on modern PHP versions.
 - Thrive Leads is optional, but supported.
+- WPForms Lite is optional, but supported.
 
 ## Install The Plugin
 
@@ -72,6 +74,21 @@ This overrides the default username from plugin settings for that submission.
 
 - The plugin forwards submissions from `tcb_api_form_submit`.
 - Thrive Leads fields matching `*_optin` are removed before forwarding.
+- Standard noise fields are also removed (see filtering section below).
+
+## WPForms Lite Notes
+
+- The plugin forwards submissions from `wpforms_process_complete`.
+- PADMA payload keys are derived from normalized WPForms field labels:
+  - lowercase
+  - non-alphanumeric characters replaced with `_`
+  - repeated `_` collapsed
+  - leading and trailing `_` removed
+- If a normalized label is empty, the plugin falls back to `field_<field_id>`.
+- If two fields normalize to the same key, the second key is suffixed with `_<field_id>`.
+- Multi-value fields (for example checkbox and multi-select) are sent as comma-separated text.
+- For predictable PADMA mapping, label WPForms fields as PADMA keys such as:
+  `name`, `first_name`, `email`, `message`, `padma_username`, `padma_ignore_this_form`.
 - Standard noise fields are also removed (see filtering section below).
 
 ## Supported Fields
@@ -134,7 +151,7 @@ When plugin settings and form fields both provide the same key:
 
 1. Confirm plugin is active.
 2. Confirm `Settings > PADMA Options` is filled and saved.
-3. Submit a test form from Contact Form 7 or Thrive Leads.
+3. Submit a test form from Contact Form 7, Thrive Leads, or WPForms Lite.
 4. Confirm the form includes a name field (`name`, `firstname`, or `first_name`).
 5. Ensure `padma_ignore_this_form` is not present unless intentionally skipping forwarding.
 
@@ -148,3 +165,6 @@ When plugin settings and form fields both provide the same key:
   - Ensure Contact Form 7 is installed and activated.
 - Unexpected username in PADMA:
   - Check if the form includes `padma_username` hidden input (it overrides default).
+- WPForms Lite submissions not mapped as expected:
+  - Confirm WPForms field labels are intentionally named as PADMA keys (for example `first_name`).
+  - Confirm duplicate labels are not accidentally creating suffixed keys like `<key>_<field_id>`.
